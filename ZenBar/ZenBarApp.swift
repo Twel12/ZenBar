@@ -1,14 +1,14 @@
-//
-//  fullscreen_ifyApp.swift
-//  fullscreen-ify
-//
-//  Created by Shivansh Agarwal on 15/04/26.
-//
-
 import SwiftUI
+import AppKit
 
 @main
-struct fullscreen_ifyApp: App {
+struct ZenBarApp: App {
+    init() {
+        if let appIcon = NSImage(named: "AppIcon") {
+            NSApplication.shared.applicationIconImage = appIcon
+        }
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()

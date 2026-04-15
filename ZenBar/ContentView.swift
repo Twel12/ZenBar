@@ -24,7 +24,7 @@ struct ContentView: View {
                 }
             }
             .searchable(text: $manager.searchText, prompt: "Search apps...")
-            .navigationTitle("Fullscreen-ify")
+            .navigationTitle("ZenBar")
             .toolbar {
                 ToolbarItem {
                     HStack(spacing: 4) {
