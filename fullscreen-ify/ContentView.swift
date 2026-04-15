@@ -6,8 +6,8 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List(manager.filteredApps) { app in
-                AppRow(app: app) {
-                    manager.toggle(app)
+                AppRow(app: app) { mode in
+                    manager.setMenuBarMode(mode, for: app)
                 }
             }
             .overlay {
@@ -28,13 +28,13 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem {
                     HStack(spacing: 4) {
-                        Image(systemName: "eye.slash.circle.fill")
+                        Image(systemName: "slider.horizontal.3")
                             .foregroundStyle(.secondary)
-                        Text("\(manager.hiddenCount)")
+                        Text("\(manager.overriddenCount)")
                             .monospacedDigit()
                             .foregroundStyle(.secondary)
                     }
-                    .help("\(manager.hiddenCount) app(s) with menu bar hidden in fullscreen")
+                    .help("\(manager.overriddenCount) app(s) overriding stock behavior")
                 }
                 ToolbarItem {
                     Button(action: { manager.loadApps() }) {
@@ -50,7 +50,7 @@ struct ContentView: View {
 
 struct AppRow: View {
     let app: AppInfo
-    let onToggle: () -> Void
+    let onModeChange: (FullscreenMenuBarMode) -> Void
 
     var body: some View {
         HStack(spacing: 12) {
@@ -70,13 +70,19 @@ struct AppRow: View {
 
             Spacer()
 
-            Toggle("Hide Menu Bar", isOn: Binding(
-                get: { app.menuBarHidden },
-                set: { _ in onToggle() }
-            ))
-            .toggleStyle(.switch)
+            Picker("Fullscreen Menu Bar", selection: Binding(
+                get: { app.menuBarMode },
+                set: { newMode in onModeChange(newMode) }
+            )) {
+                ForEach(FullscreenMenuBarMode.allCases) { mode in
+                    Text(mode.title).tag(mode)
+                }
+            }
+            .pickerStyle(.menu)
+            .frame(width: 120, alignment: .trailing)
+            .fixedSize(horizontal: true, vertical: false)
             .labelsHidden()
-            .help("Hide the menu bar when this app enters fullscreen")
+            .help("Choose stock behavior, force hide, or force show in fullscreen")
         }
         .padding(.vertical, 2)
     }
