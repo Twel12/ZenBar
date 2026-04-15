@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		9CCA9F332F8FEE5400DFDC63 /* ZenBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ZenBar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CCA9F332F8FEE5400DFDC63 /* ZenBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZenBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		9CCA9F352F8FEE5400DFDC63 /* fullscreen-ify */ = {
+		9CCA9F352F8FEE5400DFDC63 /* ZenBar */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "fullscreen-ify";
+			path = ZenBar;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -32,7 +32,7 @@
 		9CCA9F2A2F8FEE5400DFDC63 = {
 			isa = PBXGroup;
 			children = (
-				9CCA9F352F8FEE5400DFDC63 /* fullscreen-ify */,
+				9CCA9F352F8FEE5400DFDC63 /* ZenBar */,
 				9CCA9F342F8FEE5400DFDC63 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,9 +48,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9CCA9F322F8FEE5400DFDC63 /* fullscreen-ify */ = {
+		9CCA9F322F8FEE5400DFDC63 /* ZenBar */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9CCA9F3E2F8FEE5500DFDC63 /* Build configuration list for PBXNativeTarget "fullscreen-ify" */;
+			buildConfigurationList = 9CCA9F3E2F8FEE5500DFDC63 /* Build configuration list for PBXNativeTarget "ZenBar" */;
 			buildPhases = (
 				9CCA9F2F2F8FEE5400DFDC63 /* Sources */,
 				9CCA9F302F8FEE5400DFDC63 /* Frameworks */,
@@ -61,12 +61,12 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				9CCA9F352F8FEE5400DFDC63 /* fullscreen-ify */,
+				9CCA9F352F8FEE5400DFDC63 /* ZenBar */,
 			);
-			name = "fullscreen-ify";
+			name = ZenBar;
 			packageProductDependencies = (
 			);
-			productName = "fullscreen-ify";
+			productName = ZenBar;
 			productReference = 9CCA9F332F8FEE5400DFDC63 /* ZenBar.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -85,7 +85,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9CCA9F2E2F8FEE5400DFDC63 /* Build configuration list for PBXProject "fullscreen-ify" */;
+			buildConfigurationList = 9CCA9F2E2F8FEE5400DFDC63 /* Build configuration list for PBXProject "ZenBar" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -99,7 +99,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9CCA9F322F8FEE5400DFDC63 /* fullscreen-ify */,
+				9CCA9F322F8FEE5400DFDC63 /* ZenBar */,
 			);
 		};
 /* End PBXProject section */
@@ -158,6 +158,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development: shivansh.aeyron@gmail.com (NJS676K35P)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 2TLCA7SS39;
@@ -220,6 +221,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
+				CODE_SIGN_IDENTITY = "Apple Development: shivansh.aeyron@gmail.com (NJS676K35P)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 2TLCA7SS39;
@@ -248,7 +251,7 @@
 				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=macosx*]" = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2TLCA7SS39;
@@ -274,8 +277,9 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.7;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "twel12.menu-ify";
+				PRODUCT_BUNDLE_IDENTIFIER = twel12.ZenBar;
 				PRODUCT_NAME = ZenBar;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -297,7 +301,7 @@
 				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=macosx*]" = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2TLCA7SS39;
@@ -323,8 +327,9 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.7;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "twel12.menu-ify";
+				PRODUCT_BUNDLE_IDENTIFIER = twel12.ZenBar;
 				PRODUCT_NAME = ZenBar;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -342,7 +347,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9CCA9F2E2F8FEE5400DFDC63 /* Build configuration list for PBXProject "fullscreen-ify" */ = {
+		9CCA9F2E2F8FEE5400DFDC63 /* Build configuration list for PBXProject "ZenBar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9CCA9F3C2F8FEE5500DFDC63 /* Debug */,
@@ -351,7 +356,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9CCA9F3E2F8FEE5500DFDC63 /* Build configuration list for PBXNativeTarget "fullscreen-ify" */ = {
+		9CCA9F3E2F8FEE5500DFDC63 /* Build configuration list for PBXNativeTarget "ZenBar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9CCA9F3F2F8FEE5500DFDC63 /* Debug */,
