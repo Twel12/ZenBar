@@ -9,6 +9,7 @@ class AppManager {
 
     var apps: [AppInfo] = []
     var searchText = ""
+    var errorMessage: String?
 
     var filteredApps: [AppInfo] {
         guard !searchText.isEmpty else { return apps }
@@ -78,6 +79,9 @@ class AppManager {
                       let index = self.apps.firstIndex(where: { $0.id == bundleID }) else { return }
                 if isSuccessfulWrite {
                     self.apps[index].menuBarMode = mode
+                } else {
+                    let detail = result.error.isEmpty ? "Unknown error." : result.error
+                    self.errorMessage = "Couldn't update “\(self.apps[index].name)”.\n\(detail)"
                 }
             }
         }

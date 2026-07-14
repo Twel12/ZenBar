@@ -45,6 +45,17 @@ struct ContentView: View {
             }
         }
         .onAppear { manager.loadApps() }
+        .alert(
+            "Couldn't Update App",
+            isPresented: Binding(
+                get: { manager.errorMessage != nil },
+                set: { if !$0 { manager.errorMessage = nil } }
+            )
+        ) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text(manager.errorMessage ?? "")
+        }
     }
 }
 
