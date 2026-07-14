@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var manager = AppManager()
+    @State private var hasLoaded = false
 
     var body: some View {
         NavigationStack {
@@ -44,7 +45,11 @@ struct ContentView: View {
                 }
             }
         }
-        .onAppear { manager.loadApps() }
+        .onAppear {
+            guard !hasLoaded else { return }
+            hasLoaded = true
+            manager.loadApps()
+        }
         .alert(
             "Couldn't Update App",
             isPresented: Binding(
