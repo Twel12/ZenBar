@@ -39,6 +39,7 @@ class AppManager {
                     bundleIdentifier: bundleID,
                     name: appName,
                     bundleURL: appURL,
+                    icon: NSWorkspace.shared.icon(forFile: appURL.path),
                     menuBarMode: overrides[bundleID] ?? .stock
                 )
             }

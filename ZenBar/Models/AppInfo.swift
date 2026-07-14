@@ -25,9 +25,6 @@ struct AppInfo: Identifiable {
     let bundleIdentifier: String
     let name: String
     let bundleURL: URL
+    let icon: NSImage
     var menuBarMode: FullscreenMenuBarMode
-
-    var icon: NSImage {
-        NSWorkspace.shared.icon(forFile: bundleURL.path)
-    }
 }
