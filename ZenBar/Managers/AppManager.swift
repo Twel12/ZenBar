@@ -171,13 +171,15 @@ class AppManager {
 
         do {
             try process.run()
-            process.waitUntilExit()
         } catch {
             return (-1, "", "\(error)")
         }
 
+        // Drain the pipes before waiting so a large output can't fill the
+        // pipe buffer and deadlock the process against waitUntilExit().
         let outData = outPipe.fileHandleForReading.readDataToEndOfFile()
         let errData = errPipe.fileHandleForReading.readDataToEndOfFile()
+        process.waitUntilExit()
 
         let out = String(data: outData, encoding: .utf8)?
             .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
