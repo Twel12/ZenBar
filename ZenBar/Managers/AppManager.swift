@@ -35,7 +35,7 @@ class AppManager {
                       let bundleID = bundle.bundleIdentifier,
                       discovered[bundleID] == nil else { continue }
 
-                let appName = self.readAppName(from: appURL, bundleID: bundleID)
+                let appName = self.readAppName(from: bundle, url: appURL)
                 discovered[bundleID] = AppInfo(
                     bundleIdentifier: bundleID,
                     name: appName,
@@ -65,7 +65,7 @@ class AppManager {
             let result: (status: Int32, output: String, error: String)
             switch mode {
             case .stock:
-                result = self.runDefaults("delete", bundleID, self.fullscreenKey, logFailures: false)
+                result = self.runDefaults("delete", bundleID, self.fullscreenKey)
             case .forceHide:
                 result = self.runDefaults("write", bundleID, self.fullscreenKey, "-bool", "false")
             case .forceShow:
@@ -114,19 +114,14 @@ class AppManager {
         return appURLs
     }
 
-    private nonisolated func readAppName(from appURL: URL, bundleID: String) -> String {
-        if let bundle = Bundle(url: appURL) {
-            return bundle.infoDictionary?["CFBundleDisplayName"] as? String
-                ?? bundle.infoDictionary?["CFBundleName"] as? String
-                ?? appURL.deletingPathExtension().lastPathComponent
-        }
-        return appURL.deletingPathExtension().lastPathComponent.isEmpty
-            ? bundleID
-            : appURL.deletingPathExtension().lastPathComponent
+    private nonisolated func readAppName(from bundle: Bundle, url: URL) -> String {
+        bundle.infoDictionary?["CFBundleDisplayName"] as? String
+            ?? bundle.infoDictionary?["CFBundleName"] as? String
+            ?? url.deletingPathExtension().lastPathComponent
     }
 
     private nonisolated func readOverridesFromDefaultsFind() -> [String: FullscreenMenuBarMode] {
-        let result = runDefaults("find", fullscreenKey, logFailures: false)
+        let result = runDefaults("find", fullscreenKey)
         guard result.status == 0 else { return [:] }
 
         var overrides: [String: FullscreenMenuBarMode] = [:]
@@ -167,10 +162,8 @@ class AppManager {
     }
 
     @discardableResult
-    private nonisolated func runDefaults(_ arguments: String..., logFailures: Bool = true) -> (status: Int32, output: String, error: String) {
-        let result = runCommand(executable: "/usr/bin/defaults", arguments: arguments)
-        _ = logFailures // preserve call sites, no verbose logging in normal usage
-        return result
+    private nonisolated func runDefaults(_ arguments: String...) -> (status: Int32, output: String, error: String) {
+        runCommand(executable: "/usr/bin/defaults", arguments: arguments)
     }
 
     private nonisolated func runCommand(executable: String, arguments: [String]) -> (status: Int32, output: String, error: String) {
