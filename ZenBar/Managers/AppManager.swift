@@ -139,12 +139,21 @@ class AppManager {
             }
 
             guard let domain = currentDomain,
-                  trimmed.hasPrefix(fullscreenKey) else { continue }
+                  let equals = trimmed.firstIndex(of: "=") else { continue }
 
-            if trimmed.contains("= 0") || trimmed.contains("= false") {
+            let key = trimmed[..<equals].trimmingCharacters(in: .whitespaces)
+            guard key == fullscreenKey else { continue }
+
+            let value = trimmed[trimmed.index(after: equals)...]
+                .trimmingCharacters(in: CharacterSet(charactersIn: " ;"))
+
+            switch value {
+            case "0", "false":
                 overrides[domain] = .forceHide
-            } else if trimmed.contains("= 1") || trimmed.contains("= true") {
+            case "1", "true":
                 overrides[domain] = .forceShow
+            default:
+                break
             }
 
             currentDomain = nil
